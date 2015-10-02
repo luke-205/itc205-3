@@ -8,18 +8,24 @@ public class Book implements IBook {
 	private String title;
 	private String callNumber;
 	private int bookID;
-	private EBookState state = EBookState.AVAILABLE;
-
-	private ILoan loan = null;
+	private EBookState state;
+	private ILoan loan;
 
 	public Book(String author, String title, String callNumber, int bookID) {
-		if(author == null || title == null || callNumber == null || bookID <= 0)
-			throw new IllegalArgumentException();
+		if(!(sane(author, title, callNumber, bookID)))
+			throw new IllegalArgumentException("Invalid parameters");
 
 		this.author = author;
 		this.title = title;
 		this.callNumber = callNumber;
 		this.bookID = bookID;
+		this.state = EBookState.AVAILABLE;
+		this.loan = null;
+	}
+
+	private boolean sane(String author, String title, String callNumber, int bookID) {
+		return (author != null && !author.isEmpty() && title != null && !title.isEmpty() &&
+		   		callNumber != null && !callNumber.isEmpty() && bookID > 0)
 	}
 
 	public void borrow(ILoan loan) {
