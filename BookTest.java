@@ -52,6 +52,11 @@ public class BookTest {
 		assertEquals(book.getState(), EBookState.DAMAGED);
 	}
 
+	@Test(expected=RuntimeException.class)
+	public void testReturnBookThrowsRuntimeException() {
+		book.returnBook(true);
+	}
+
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("BookTest");
 	} 
