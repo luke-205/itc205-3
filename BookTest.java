@@ -64,6 +64,11 @@ public class BookTest {
 		assertEquals(book.getState(), EBookState.LOST);
 	}
 
+	@Test(expected=RuntimeException.class)
+	public void testLoseThrowsRuntimeException() {
+		book.lose();
+	}
+
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("BookTest");
 	} 
