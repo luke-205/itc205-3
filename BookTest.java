@@ -77,6 +77,11 @@ public class BookTest {
 		assertEquals(book.getState(), EBookState.AVAILABLE);
 	}
 
+	@Test(expected=RuntimeException.class)
+	public void testRepairThrowsRuntimeException() {
+		book.repair();
+	}
+
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("BookTest");
 	} 
