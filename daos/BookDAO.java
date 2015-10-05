@@ -9,14 +9,16 @@ import library.interfaces.daos.IBookDAO;
 
 public class BookDAO implements IBookDAO {
 
-	private int nextID = 0;
+	private int nextID;
 	private IBookHelper helper;
-	private List<IBook> bookList = new ArrayList<IBook>();
+	private List<IBook> bookList;
 
-	BookDAO(IBookHelper helper) {
+	public BookDAO(IBookHelper helper) {
 		if(helper == null)
 			throw new IllegalArgumentException("Helper is null");
+		this.nextID = 1;
 		this.helper = helper;
+		this.bookList = new ArrayList<IBook>();
 	}
 	
 	public IBook addBook(String author, String title, String callNo) {

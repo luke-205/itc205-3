@@ -25,10 +25,12 @@ public class Book implements IBook {
 
 	private boolean sane(String author, String title, String callNumber, int bookID) {
 		return (author != null && !author.isEmpty() && title != null && !title.isEmpty() &&
-		   		callNumber != null && !callNumber.isEmpty() && bookID > 0)
+		   		callNumber != null && !callNumber.isEmpty() && bookID > 0);
 	}
 
 	public void borrow(ILoan loan) {
+		if(loan == null)
+			throw new IllegalArgumentException("Invalid parameter");
 		if(state != EBookState.AVAILABLE)
 			throw new RuntimeException("Book currently not available");
 		this.loan = loan;
@@ -63,7 +65,7 @@ public class Book implements IBook {
 	}
 	
 	public void dispose() {
-		if(state != EBookState.AVAILABLE || state != EBookState.DAMAGED || state != EBookState.LOST)
+		if(state == EBookState.DISPOSED || state == EBookState.ON_LOAN)
 			throw new RuntimeException("No reason to dispose of book");
 		state = EBookState.DISPOSED;
 	}	
