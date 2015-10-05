@@ -25,6 +25,11 @@ public class BookTest {
 		assertEquals(book.getState(), EBookState.ON_LOAN);
 	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testBorrowThrowsIllegalArgumentException() {
+		book.borrow(null);
+	}
+
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("BookTest");
 	} 
