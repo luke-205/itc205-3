@@ -69,6 +69,14 @@ public class BookTest {
 		book.lose();
 	}
 
+	@Test
+	public void testRepair() {
+		book.borrow(_loan);
+		book.returnBook(true);
+		book.repair();
+		assertEquals(book.getState(), EBookState.AVAILABLE);
+	}
+
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("BookTest");
 	} 
