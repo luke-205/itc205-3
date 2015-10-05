@@ -37,7 +37,7 @@ public class BookTest {
 	}
 
 	@Test
-	public void testReturnNotDamaged() {
+	public void testReturnBookNotDamaged() {
 		book.borrow(_loan);
 		book.returnBook(false);
 		assertEquals(book.getLoan(), null);
@@ -45,7 +45,7 @@ public class BookTest {
 	}
 
 	@Test
-	public void testReturnDamaged() {
+	public void testReturnBookDamaged() {
 		book.borrow(_loan);
 		book.returnBook(true);
 		assertEquals(book.getLoan(), null);
