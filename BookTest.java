@@ -30,6 +30,12 @@ public class BookTest {
 		book.borrow(null);
 	}
 
+	@Test(expected=RuntimeException.class)
+	public void testBorrowThrowsRuntimeException() {
+		book.borrow(_loan);
+		book.borrow(_loan);
+	}
+
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("BookTest");
 	} 
