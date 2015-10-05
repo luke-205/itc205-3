@@ -36,6 +36,14 @@ public class BookTest {
 		book.borrow(_loan);
 	}
 
+	@Test
+	public void testReturnNotDamaged() {
+		book.borrow(_loan);
+		book.returnBook(false);
+		assertEquals(book.getLoan(), null);
+		assertEquals(book.getState(), EBookState.AVAILABLE);
+	}
+
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("BookTest");
 	} 
