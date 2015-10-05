@@ -82,6 +82,12 @@ public class BookTest {
 		book.repair();
 	}
 
+	@Test
+	public void testDispose() {
+		book.dispose();
+		assertEquals(book.getState(), EBookState.DISPOSED);
+	}
+
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("BookTest");
 	} 
