@@ -3,6 +3,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
+import org.junit.After;
 
 import library.entities.Book;
 import library.interfaces.entities.ILoan;
@@ -16,6 +17,12 @@ public class BookTest {
 	public void setUp() {
 		_loan = mock(ILoan.class);
 		book = new Book("Test author", "Test title", "Test callnumber", 123456);
+	}
+
+	@After
+	public void tearDown() {
+		_loan = null;
+		book = null;
 	}
 
 	@Test
